@@ -13,5 +13,6 @@ export default defineConfig({
     fs: {
       allow: ['..']
     }
-  }
+  },
+  base: '/fallout_cv_app/'
 })
