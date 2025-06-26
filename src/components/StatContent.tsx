@@ -197,7 +197,7 @@ const StatContent: React.FC<StatContentProps> = ({
             <span className="terminal-label text-base sm:text-lg text-center sm:text-left">LEVEL {candidateData.level}</span>
                          <div className="flex-1 h-8 sm:h-6 min-h-[2rem] sm:min-h-[1.5rem] crt-border relative sm:max-w-md">
               <div 
-                className="h-full min-h-[2rem] sm:min-h-[1.5rem] bg-green-500 crt-bar transition-all duration-1000"
+                className="h-full min-h-[2rem] sm:min-h-0 bg-green-500 crt-bar transition-all duration-1000"
                 style={{
                   width: (() => {
                     const [current, total] = currentXP.split('/').map(x => parseInt(x.replace(/,/g, '')));
