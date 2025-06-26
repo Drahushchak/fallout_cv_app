@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* Make all text non-selectable */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Make all interactive elements have pointer cursor */
+button,
+.cursor-pointer,
+[onClick],
+[onMouseEnter],
+.crt-hover,
+.crt-tab,
+.crt-subtab,
+.crt-box[onClick],
+.crt-box.cursor-pointer,
+[role="button"],
+a,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  cursor: pointer !important;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
