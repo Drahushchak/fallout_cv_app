@@ -189,7 +189,7 @@ const PipBoyCV: React.FC = () => {
         <div className={`w-full max-w-7xl mx-auto relative z-20 flex flex-col h-full ${glitchEffect ? 'glitch' : ''}`}>
           <div className="h-full crt-border rounded-lg bg-black bg-opacity-90 flex-1 flex flex-col">
             {/* Main tabs */}
-            <div className="flex flex-wrap justify-around gap-2 p-3 sm:p-5 border-b-2 border-green-500 flex-shrink-0">
+            <div className="flex flex-wrap justify-around gap-1 sm:gap-2 p-2 sm:p-3 md:p-5 border-b-2 border-green-500 flex-shrink-0">
               {['STAT', 'INV', 'DATA', 'MAP', 'RADIO'].map(tab => (
                 <button 
                   key={tab} 
@@ -213,7 +213,7 @@ const PipBoyCV: React.FC = () => {
 
             {/* Sub tabs */}
             {getSubTabs().length > 0 && (
-              <div className="flex flex-wrap gap-3 px-3 sm:px-5 py-4 border-b border-green-500 flex-shrink-0">
+              <div className="flex flex-wrap gap-2 sm:gap-3 px-2 sm:px-3 md:px-5 py-2 sm:py-3 md:py-4 border-b border-green-500 flex-shrink-0">
                 {getSubTabs().map(subTab => (
                   <button 
                     key={subTab} 

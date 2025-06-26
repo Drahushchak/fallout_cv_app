@@ -274,6 +274,15 @@ const CRTStyles: React.FC = () => {
         padding: 0.75rem 1.5rem;
       }
       
+      /* Mobile responsive tab styles */
+      @media (max-width: 640px) {
+        .crt-tab {
+          padding: 0.4rem 0.8rem;
+          letter-spacing: 1px;
+          font-size: 0.85rem;
+        }
+      }
+      
       .crt-tab:hover {
         border-color: #41ff00;
         background: rgba(65, 255, 0, 0.1);
@@ -295,6 +304,15 @@ const CRTStyles: React.FC = () => {
         letter-spacing: 2px;
         border-bottom: 2px solid transparent;
         padding: 0.5rem 1rem;
+      }
+      
+      /* Mobile responsive subtab styles */
+      @media (max-width: 640px) {
+        .crt-subtab {
+          padding: 0.3rem 0.6rem;
+          letter-spacing: 1px;
+          font-size: 0.8rem;
+        }
       }
       
       .crt-subtab:hover {
