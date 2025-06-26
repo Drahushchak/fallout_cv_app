@@ -14,7 +14,7 @@ const MapContent: React.FC = () => {
         onClick={() => playMapSound()}
       >
         <img 
-          src="/icons/FO4MapMarkers/icon_3.svg" 
+          src={`${import.meta.env.BASE_URL}icons/FO4MapMarkers/icon_3.svg`} 
           alt="Current Location"
           className="w-full h-full object-contain map-icon"
         />
@@ -29,7 +29,7 @@ const MapContent: React.FC = () => {
         <div className="flex items-center justify-center gap-3">
           <div className="w-5 h-5 flex items-center justify-center">
             <img 
-              src="/icons/FO4StatsPageIcons/icon_74.svg" 
+              src={`${import.meta.env.BASE_URL}icons/FO4StatsPageIcons/icon_74.svg`} 
               alt="Radiation"
               className="w-full h-full object-contain map-icon"
             />
@@ -39,7 +39,7 @@ const MapContent: React.FC = () => {
         <div className="flex items-center justify-center gap-3">
           <div className="w-5 h-5 flex items-center justify-center">
             <img 
-              src="/icons/FO4StatsPageIcons/icon_76.svg" 
+              src={`${import.meta.env.BASE_URL}icons/FO4StatsPageIcons/icon_76.svg`} 
               alt="Temperature"
               className="w-full h-full object-contain map-icon"
             />
@@ -49,7 +49,7 @@ const MapContent: React.FC = () => {
         <div className="flex items-center justify-center gap-3">
           <div className="w-5 h-5 flex items-center justify-center">
             <img 
-              src="/icons/FO4StatsPageIcons/icon_104.svg" 
+              src={`${import.meta.env.BASE_URL}icons/FO4StatsPageIcons/icon_104.svg`} 
               alt="Signal"
               className="w-full h-full object-contain map-icon"
             />

@@ -213,40 +213,42 @@ export const special: SpecialAttribute[] = [
   { name: "Leadership", level: 6, desc: "Leading projects and mentoring junior developers" }
 ];
 
+const getIconPath = (path: string) => `${import.meta.env.BASE_URL}icons/${path}`;
+
 export const perks: Perk[] = [
   { 
     name: "Redis Ranger", 
-    icon: "/icons/FO4SpecialIcons/icon_intelligence_1.svg", 
+    icon: getIconPath("FO4SpecialIcons/icon_intelligence_1.svg"), 
     desc: "Master of in-memory data structures. +50% cache hit rate, -30% response time",
     details: "3 years managing Redis clusters, optimization expert"
   },
   { 
     name: "PostgreSQL Paladin", 
-    icon: "/icons/FO4DataPageIcons/icon_4.svg", 
+    icon: getIconPath("FO4DataPageIcons/icon_4.svg"), 
     desc: "Database guardian. Query optimization, complex joins, stored procedures",
     details: "5 years of PostgreSQL, including replication and performance tuning"
   },
   { 
     name: "Grafana Explorer", 
-    icon: "/icons/FO4StatsPageIcons/icon_100.svg", 
+    icon: getIconPath("FO4StatsPageIcons/icon_100.svg"), 
     desc: "Visualization virtuoso. Creates dashboards that tell stories",
     details: "Built 20+ production dashboards, expert in metrics and alerting"
   },
   { 
     name: "GraphQL Gunslinger", 
-    icon: "/icons/FO4InvPageIcons/icon_122.svg", 
+    icon: getIconPath("FO4InvPageIcons/icon_122.svg"), 
     desc: "Quick-draw API designer. Efficient queries, perfect schemas",
     details: "Designed and implemented 5 GraphQL APIs from scratch"
   },
   { 
     name: "Docker Dweller", 
-    icon: "/icons/FO4PipboyMenuIcons/icon_14.svg", 
+    icon: getIconPath("FO4PipboyMenuIcons/icon_14.svg"), 
     desc: "Container craftsman. Microservices architecture specialist",
     details: "Containerized 15+ applications, Kubernetes deployment experience"
   },
   { 
     name: "React Ronin", 
-    icon: "/icons/FO4SpecialIcons/icon_intelligence_3.svg", 
+    icon: getIconPath("FO4SpecialIcons/icon_intelligence_3.svg"), 
     desc: "Component samurai. Hooks master, performance optimizer",
     details: "4 years building scalable React applications"
   }

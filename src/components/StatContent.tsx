@@ -219,7 +219,7 @@ const StatContent: React.FC<StatContentProps> = ({
             {/* Head */}
             <div className="w-15 h-15 flex items-center justify-center">
               <img 
-                src="/icons/FO4HealthConditionIcons/icon_condition_head_1.svg" 
+                src={`${import.meta.env.BASE_URL}icons/FO4HealthConditionIcons/icon_condition_head_1.svg`} 
                 alt="Character Head"
                 className="w-full h-full object-contain status-icon"
               />
@@ -227,7 +227,7 @@ const StatContent: React.FC<StatContentProps> = ({
             {/* Body */}
             <div className="w-24 h-32 flex items-center justify-center -mt-2">
               <img 
-                src="/icons/FO4HealthConditionIcons/icon_condition_body_0.svg" 
+                src={`${import.meta.env.BASE_URL}icons/FO4HealthConditionIcons/icon_condition_body_0.svg`} 
                 alt="Character Body"
                 className="w-full h-full object-contain status-icon"
               />
@@ -284,21 +284,21 @@ const StatContent: React.FC<StatContentProps> = ({
                         <div className="w-4 h-4 flex items-center justify-center">
                           {contributor.itemType === 'WEAPON' && (
                             <img 
-                              src="/icons/FO4InvPageIcons/icon_104.svg" 
+                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_104.svg`} 
                               alt="Weapon"
                               className="w-full h-full object-contain status-icon"
                             />
                           )}
                           {contributor.itemType === 'APPAREL' && (
                             <img 
-                              src="/icons/FO4InvPageIcons/icon_36.svg" 
+                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_36.svg`} 
                               alt="Apparel"
                               className="w-full h-full object-contain status-icon"
                             />
                           )}
                           {contributor.itemType !== 'WEAPON' && contributor.itemType !== 'APPAREL' && (
                             <img 
-                              src="/icons/FO4InvPageIcons/icon_20.svg" 
+                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_20.svg`} 
                               alt="Temporary"
                               className="w-full h-full object-contain status-icon"
                             />
@@ -324,7 +324,7 @@ const StatContent: React.FC<StatContentProps> = ({
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 flex items-center justify-center">
                 <img 
-                  src="/icons/FO4InvPageIcons/icon_104.svg" 
+                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_104.svg`} 
                   alt="Weapon"
                   className="w-full h-full object-contain status-icon"
                 />
@@ -334,7 +334,7 @@ const StatContent: React.FC<StatContentProps> = ({
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 flex items-center justify-center">
                 <img 
-                  src="/icons/FO4InvPageIcons/icon_36.svg" 
+                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_36.svg`} 
                   alt="Apparel"
                   className="w-full h-full object-contain status-icon"
                 />
@@ -344,7 +344,7 @@ const StatContent: React.FC<StatContentProps> = ({
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 flex items-center justify-center">
                 <img 
-                  src="/icons/FO4InvPageIcons/icon_20.svg" 
+                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_20.svg`} 
                   alt="Temporary"
                   className="w-full h-full object-contain status-icon"
                 />
