@@ -31,7 +31,6 @@ const PipBoyCV: React.FC = () => {
     playTabSound,
     playSubTabSound,
     playHoverSound,
-    playSelectSound,
     playConfirmSound,
     playWearOffSound
   } = useSoundEffects();

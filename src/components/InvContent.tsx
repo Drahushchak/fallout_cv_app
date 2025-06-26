@@ -164,7 +164,7 @@ ${candidateData.education}
             <span className="text-center">VAL</span>
           </div>
           <div className="max-h-96 overflow-y-auto crt-scroll">
-            {filteredItems.map((item, index) => {
+            {filteredItems.map((item) => {
               // Find the original index in the unfiltered array for proper handling
               const originalIndex = items.findIndex(originalItem => originalItem === item);
               return (

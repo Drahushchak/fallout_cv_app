@@ -1,4 +1,3 @@
-import React from 'react';
 import PipBoyCV from './components/PipBoyCV';
 import './App.css';
 
