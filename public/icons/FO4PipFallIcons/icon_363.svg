@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128pt" height="128pt" viewBox="0 0 128 128" version="1.1">
+<defs>
+<radialGradient id="radial0" gradientUnits="userSpaceOnUse" cx="0" cy="0" fx="0" fy="0" r="819.2" gradientTransform="matrix(0.0787095,0,0,0.0787095,64,64)">
+<stop offset="0.682353" style="stop-color:rgb(100%,100%,100%);stop-opacity:1;"/>
+<stop offset="1" style="stop-color:rgb(100%,100%,100%);stop-opacity:0;"/>
+</radialGradient>
+</defs>
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:url(#radial0);" d="M 128 64 C 128 81.664062 121.75 96.746094 109.246094 109.246094 C 96.746094 121.75 81.664062 128 64 128 C 46.335938 128 31.253906 121.75 18.753906 109.246094 C 6.25 96.746094 0 81.664062 0 64 C 0 46.335938 6.25 31.253906 18.753906 18.753906 C 31.253906 6.25 46.335938 0 64 0 C 81.664062 0 96.746094 6.25 109.246094 18.753906 C 121.75 31.253906 128 46.335938 128 64 "/>
+</g>
+</svg>

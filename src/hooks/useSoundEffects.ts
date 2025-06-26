@@ -20,7 +20,7 @@ export const useSoundEffects = () => {
     };
 
     // Load main hum sound (background ambient)  
-    const soundBasePath = '/src/assets/audio/sound_effects';
+    const soundBasePath = '/audio/sound_effects';
     humRef.current = loadSound('hum', `${soundBasePath}/PipBoy/UI_PipBoy_Hum_LP.wav`, true);
     
     // Load UI interaction sounds
