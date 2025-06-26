@@ -170,22 +170,34 @@ const StatContent: React.FC<StatContentProps> = ({
       )}
       {/* Top HUD Stats Bar */}
       <div className="mb-8">
-        <div className="flex items-center justify-between gap-8 mb-4 px-4 py-2 crt-border bg-black bg-opacity-60">
-          {/* HP */}
-          <div className="flex items-center gap-3">
-            <span className="terminal-label text-lg">HP</span>
-            <span className="terminal-value text-xl font-bold">
-              {candidateData.hp + appliedStats.hp}/100
-              {appliedStats.hp > 0 && <span className="text-green-400 text-sm ml-2">+{appliedStats.hp}</span>}
-            </span>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-8 mb-4 px-3 sm:px-4 py-3 sm:py-2 crt-border bg-black bg-opacity-60">
+          {/* HP and AP - Side by side on mobile, outer positions on desktop */}
+          <div className="flex items-center justify-between sm:justify-start gap-4 sm:gap-8 order-1 sm:order-none">
+            {/* HP */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="terminal-label text-sm sm:text-lg">HP</span>
+              <span className="terminal-value text-lg sm:text-xl font-bold">
+                {candidateData.hp + appliedStats.hp}/100
+                {appliedStats.hp > 0 && <span className="text-green-400 text-xs sm:text-sm ml-1 sm:ml-2">+{appliedStats.hp}</span>}
+              </span>
+            </div>
+            
+            {/* AP */}
+            <div className="flex items-center gap-2 sm:gap-3 sm:hidden">
+              <span className="terminal-label text-sm sm:text-lg">AP</span>
+              <span className="terminal-value text-lg sm:text-xl font-bold">
+                {candidateData.ap + appliedStats.ap}/100
+                {appliedStats.ap > 0 && <span className="text-green-400 text-xs sm:text-sm ml-1 sm:ml-2">+{appliedStats.ap}</span>}
+              </span>
+            </div>
           </div>
           
-          {/* Level with XP Progress */}
-          <div className="flex-1 flex items-center gap-4">
-            <span className="terminal-label text-lg">LEVEL {candidateData.level}</span>
-            <div className="flex-1 h-6 crt-border relative max-w-md">
+          {/* Level with XP Progress - Full width on mobile */}
+          <div className="flex-1 sm:flex-1 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 order-2 sm:order-none">
+            <span className="terminal-label text-base sm:text-lg text-center sm:text-left">LEVEL {candidateData.level}</span>
+                         <div className="flex-1 h-8 sm:h-6 min-h-[2rem] sm:min-h-[1.5rem] crt-border relative sm:max-w-md">
               <div 
-                className="h-full bg-green-500 crt-bar transition-all duration-1000"
+                className="h-full min-h-[2rem] sm:min-h-[1.5rem] bg-green-500 crt-bar transition-all duration-1000"
                 style={{
                   width: (() => {
                     const [current, total] = currentXP.split('/').map(x => parseInt(x.replace(/,/g, '')));
@@ -201,8 +213,8 @@ const StatContent: React.FC<StatContentProps> = ({
             </div>
           </div>
           
-          {/* AP */}
-          <div className="flex items-center gap-3">
+          {/* AP - Hidden on mobile, shown on desktop */}
+          <div className="hidden sm:flex items-center gap-3">
             <span className="terminal-label text-lg">AP</span>
             <span className="terminal-value text-xl font-bold">
               {candidateData.ap + appliedStats.ap}/100
