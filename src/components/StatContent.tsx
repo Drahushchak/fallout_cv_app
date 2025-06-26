@@ -216,7 +216,7 @@ const StatContent: React.FC<StatContentProps> = ({
           {/* AP - Hidden on mobile, shown on desktop */}
           <div className="hidden sm:flex items-center gap-3">
             <span className="terminal-label text-lg">AP</span>
-            <span className="terminal-value text-xl font-bold">
+                          <span className="terminal-value text-lg sm:text-xl font-bold">
               {candidateData.ap + appliedStats.ap}/100
               {appliedStats.ap > 0 && <span className="text-green-400 text-sm ml-2">+{appliedStats.ap}</span>}
             </span>
@@ -229,7 +229,7 @@ const StatContent: React.FC<StatContentProps> = ({
         <div className="flex justify-center items-center">
           <div className="flex flex-col items-center">
             {/* Head */}
-            <div className="w-15 h-15 flex items-center justify-center">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
               <img 
                 src={`${import.meta.env.BASE_URL}icons/FO4HealthConditionIcons/icon_condition_head_1.svg`} 
                 alt="Character Head"
@@ -237,7 +237,7 @@ const StatContent: React.FC<StatContentProps> = ({
               />
             </div>
             {/* Body */}
-            <div className="w-24 h-32 flex items-center justify-center -mt-2">
+            <div className="w-16 h-20 sm:w-20 sm:h-24 flex items-center justify-center -mt-1.5 sm:-mt-2">
               <img 
                 src={`${import.meta.env.BASE_URL}icons/FO4HealthConditionIcons/icon_condition_body_0.svg`} 
                 alt="Character Body"
@@ -282,7 +282,7 @@ const StatContent: React.FC<StatContentProps> = ({
                   <div className="terminal-value text-lg">
                     {getEffectDisplayName(effect.name)}
                   </div>
-                  <div className="terminal-value text-xl font-bold text-green-400">
+                  <div className="terminal-value text-lg sm:text-xl font-bold text-green-400">
                     +{effect.totalValue}%
                   </div>
                 </div>
@@ -471,7 +471,7 @@ const StatContent: React.FC<StatContentProps> = ({
                 />
               </div>
               <div className="flex-1">
-                <h3 className="text-2xl terminal-value mb-3 font-bold">{perks[selectedPerk].name}</h3>
+                <h3 className="text-lg sm:text-2xl terminal-value mb-3 font-bold">{perks[selectedPerk].name}</h3>
                 <p className="crt-dim mb-4 text-base leading-relaxed">{perks[selectedPerk].desc}</p>
                 <div className="terminal-label text-sm mb-2">EXPERIENCE:</div>
                 <p className="text-sm leading-relaxed">{perks[selectedPerk].details}</p>

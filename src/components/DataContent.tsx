@@ -38,7 +38,7 @@ const DataContent: React.FC<DataContentProps> = ({ quests, onQuestToggle }) => {
           onClick={() => handleQuestClick(index)}
         >
           <div className="flex justify-between items-center mb-3">
-            <h3 className="text-xl terminal-value">{quest.name}</h3>
+            <h3 className="text-base sm:text-xl terminal-value">{quest.name}</h3>
             <div className="flex items-center gap-3">
               {quest.tracked && (
                 <span className="text-green-400 text-sm terminal-label">TRACKED</span>

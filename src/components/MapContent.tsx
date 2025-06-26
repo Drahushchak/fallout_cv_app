@@ -8,7 +8,7 @@ const MapContent: React.FC = () => {
   return (
     <Content>
       <div className="crt-text p-6 max-w-2xl mx-auto text-center">
-      <div className="text-2xl terminal-value mb-8">CURRENT LOCATION</div>
+      <div className="text-lg sm:text-2xl terminal-value mb-8">CURRENT LOCATION</div>
       <div 
         className="w-24 h-24 mb-6 crt-blink cursor-pointer flex items-center justify-center mx-auto"
         onClick={() => playMapSound()}
@@ -19,7 +19,7 @@ const MapContent: React.FC = () => {
           className="w-full h-full object-contain map-icon"
         />
       </div>
-      <h3 className="text-xl terminal-value mb-2">BOSTON COMMONWEALTH</h3>
+      <h3 className="text-base sm:text-xl terminal-value mb-2">BOSTON COMMONWEALTH</h3>
       <p className="mb-4 crt-dim">United States • East Coast</p>
       <div className="inline-block crt-box p-4 mb-6 font-mono">
         LAT: 42.3601° N<br/>
@@ -58,7 +58,7 @@ const MapContent: React.FC = () => {
         </div>
       </div>
       <div className="crt-divider py-6">
-        <h4 className="text-lg terminal-value mb-3">AVAILABILITY</h4>
+        <h4 className="text-base sm:text-lg terminal-value mb-3">AVAILABILITY</h4>
         <p>✓ Remote Work</p>
         <p>✓ Hybrid (2-3 days/week)</p>
         <p>✓ Relocation Possible</p>

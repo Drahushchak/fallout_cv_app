@@ -16,7 +16,7 @@ const RadioContent: React.FC = () => {
   return (
     <Content>
       <div className="crt-text p-6 max-w-2xl mx-auto">
-      <div className="text-2xl terminal-value text-center mb-8">COMMUNICATION CHANNELS</div>
+      <div className="text-lg sm:text-2xl terminal-value text-center mb-8">COMMUNICATION CHANNELS</div>
       <div className="space-y-4">
         {stations.map((station, index) => (
           <div 
@@ -28,7 +28,7 @@ const RadioContent: React.FC = () => {
               playSelectSound();
             }}
           >
-            <div className="text-3xl terminal-value mb-1">{station.freq}</div>
+            <div className="text-xl sm:text-3xl terminal-value mb-1">{station.freq}</div>
             <div className="terminal-label mb-1">{station.name}</div>
             <div className="text-sm crt-dim">{station.info}</div>
           </div>

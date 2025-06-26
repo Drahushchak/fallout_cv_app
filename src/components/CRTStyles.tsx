@@ -133,6 +133,98 @@ const CRTStyles: React.FC = () => {
         text-shadow: 0 0 3px #7fff00;
       }
       
+      /* Mobile responsive text styles */
+      @media (max-width: 640px) {
+        .terminal-label {
+          letter-spacing: 1px;
+          font-size: 0.9rem;
+        }
+        
+        .terminal-value {
+          font-size: 0.95rem;
+        }
+        
+        /* Responsive text size adjustments */
+        .text-3xl {
+          font-size: 1.5rem !important;
+        }
+        
+        .text-2xl {
+          font-size: 1.25rem !important;
+        }
+        
+        .text-xl {
+          font-size: 1.125rem !important;
+        }
+        
+        .text-lg {
+          font-size: 1rem !important;
+        }
+        
+        .text-base {
+          font-size: 0.9rem !important;
+        }
+        
+        .text-sm {
+          font-size: 0.8rem !important;
+        }
+        
+        .text-xs {
+          font-size: 0.7rem !important;
+        }
+        
+        /* Component-specific mobile optimizations */
+        .crt-badge {
+          padding: 0.25rem 0.5rem !important;
+          font-size: 0.7rem !important;
+        }
+        
+        /* Mobile perk grid adjustments */
+        .min-h-\\[200px\\] {
+          min-height: 120px !important;
+        }
+        
+        /* Mobile grid adjustments */
+        .grid-cols-\\[24px_1fr_80px_80px_80px\\] {
+          grid-template-columns: 20px 1fr 50px 50px 50px !important;
+        }
+        
+        /* Mobile icon sizes */
+        .w-24 {
+          width: 4rem !important;
+        }
+        
+        .h-24 {
+          width: 4rem !important;
+        }
+        
+        .w-5 {
+          width: 1rem !important;
+        }
+        
+        .h-5 {
+          height: 1rem !important;
+        }
+        
+        /* Mobile responsive letter spacing for all text */
+        * {
+          letter-spacing: 0.5px !important;
+        }
+        
+        .terminal-label {
+          letter-spacing: 0.8px !important;
+        }
+        
+        /* Mobile responsive line heights */
+        .leading-relaxed {
+          line-height: 1.4 !important;
+        }
+        
+        .leading-tight {
+          line-height: 1.2 !important;
+        }
+      }
+      
       .terminal-row {
         display: flex;
         align-items: center;
@@ -188,6 +280,90 @@ const CRTStyles: React.FC = () => {
           inset 0 0 10px rgba(65, 255, 0, 0.1),
           0 0 8px rgba(65, 255, 0, 0.2);
         transition: none;
+      }
+      
+      /* Mobile responsive box and padding styles */
+      @media (max-width: 640px) {
+        .crt-box {
+          padding: 0.75rem !important;
+          border-width: 1px;
+        }
+        
+        /* Reduce padding for mobile */
+        .p-6 {
+          padding: 0.75rem !important;
+        }
+        
+        .p-5 {
+          padding: 0.625rem !important;
+        }
+        
+        .p-4 {
+          padding: 0.5rem !important;
+        }
+        
+        .px-6 {
+          padding-left: 0.75rem !important;
+          padding-right: 0.75rem !important;
+        }
+        
+        .px-5 {
+          padding-left: 0.625rem !important;
+          padding-right: 0.625rem !important;
+        }
+        
+        .py-6 {
+          padding-top: 0.75rem !important;
+          padding-bottom: 0.75rem !important;
+        }
+        
+        .py-5 {
+          padding-top: 0.625rem !important;
+          padding-bottom: 0.625rem !important;
+        }
+        
+        .py-4 {
+          padding-top: 0.5rem !important;
+          padding-bottom: 0.5rem !important;
+        }
+        
+        /* Reduce margins for mobile */
+        .mb-8 {
+          margin-bottom: 1rem !important;
+        }
+        
+        .mb-6 {
+          margin-bottom: 0.75rem !important;
+        }
+        
+        .mb-4 {
+          margin-bottom: 0.5rem !important;
+        }
+        
+        .mt-8 {
+          margin-top: 1rem !important;
+        }
+        
+        .mt-6 {
+          margin-top: 0.75rem !important;
+        }
+        
+        /* Adjust gaps for mobile */
+        .gap-6 {
+          gap: 0.75rem !important;
+        }
+        
+        .gap-5 {
+          gap: 0.625rem !important;
+        }
+        
+        .gap-4 {
+          gap: 0.5rem !important;
+        }
+        
+        .gap-3 {
+          gap: 0.375rem !important;
+        }
       }
       
       .crt-box:hover,
