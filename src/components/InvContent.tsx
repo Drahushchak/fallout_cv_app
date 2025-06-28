@@ -181,7 +181,7 @@ ${candidateData.education}
   const filteredItems = items.filter(item => item.qty > 0);
 
   // Use selectedItem on mobile, hoveredItem on desktop
-  const displayedItem = selectedItem || hoveredItem;
+  const displayedItem = hoveredItem || selectedItem;
 
   return (
     <Content>
