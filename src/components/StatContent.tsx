@@ -32,26 +32,26 @@ const StatContent: React.FC<StatContentProps> = ({
   quests
 }) => {
   const { playSelectSound, playHoverSound } = useSoundEffects();
-  
+
   // State for real-time XP countdown
   const [currentXP, setCurrentXP] = useState(candidateData.xp);
-  
+
   // State for Vault-Tec notice visibility
   const [showVaultTecNotice, setShowVaultTecNotice] = useState(true);
-  
+
   // Helper function to calculate XP progression
   const calculateCurrentXP = () => {
     const inProgressQuest = quests.find(quest => quest.status === 'IN PROGRESS');
-    
+
     if (!inProgressQuest) {
       return candidateData.xp; // No progression if no in-progress quest
     }
-    
+
     // Parse the in-progress quest period to get start date
     try {
       const now = new Date();
       const currentYear = now.getFullYear();
-      
+
       // Parse start date from quest period
       let questStartDate: Date;
       if (inProgressQuest.period.toLowerCase().includes('present')) {
@@ -65,26 +65,26 @@ const StatContent: React.FC<StatContentProps> = ({
         // Fallback
         questStartDate = new Date(currentYear, 0, 1);
       }
-      
+
       // For XP display, show progress within the current year
       const startOfCurrentYear = new Date(currentYear, 0, 1);
-      
+
       // If the quest started this year, show progress from quest start
       // Otherwise, show progress from start of current year
-      const progressStart = questStartDate.getFullYear() === currentYear 
-        ? questStartDate 
+      const progressStart = questStartDate.getFullYear() === currentYear
+        ? questStartDate
         : startOfCurrentYear;
-      
+
       const secondsElapsed = Math.floor((now.getTime() - progressStart.getTime()) / 1000);
       const secondsInYear = 365 * 24 * 60 * 60;
-      
+
       return `${secondsElapsed.toLocaleString()}/${secondsInYear.toLocaleString()}`;
     } catch (error) {
       console.error('Error calculating XP:', error);
       return candidateData.xp;
     }
   };
-  
+
   // Check localStorage for Vault-Tec notice preference on mount
   useEffect(() => {
     const vaultTecNoticeClosed = localStorage.getItem('vaultTecNoticeClosed');
@@ -96,12 +96,12 @@ const StatContent: React.FC<StatContentProps> = ({
   // Update XP every second if there's an in-progress quest
   useEffect(() => {
     const inProgressQuest = quests.find(quest => quest.status === 'IN PROGRESS');
-    
+
     if (inProgressQuest) {
       const interval = setInterval(() => {
         setCurrentXP(calculateCurrentXP());
       }, 1000);
-      
+
       return () => clearInterval(interval);
     } else {
       setCurrentXP(candidateData.xp);
@@ -181,7 +181,7 @@ const StatContent: React.FC<StatContentProps> = ({
                 {appliedStats.hp > 0 && <span className="text-green-400 text-xs sm:text-sm ml-1 sm:ml-2">+{appliedStats.hp}</span>}
               </span>
             </div>
-            
+
             {/* AP */}
             <div className="flex items-center gap-2 sm:gap-3 sm:hidden">
               <span className="terminal-label text-sm sm:text-lg">AP</span>
@@ -191,12 +191,12 @@ const StatContent: React.FC<StatContentProps> = ({
               </span>
             </div>
           </div>
-          
+
           {/* Level with XP Progress - Full width on mobile */}
           <div className="flex-1 sm:flex-1 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 order-2 sm:order-none">
             <span className="terminal-label text-base sm:text-lg text-center sm:text-left">LEVEL {candidateData.level}</span>
                          <div className="flex-1 h-8 sm:h-6 min-h-[2rem] sm:min-h-[1.5rem] crt-border relative sm:max-w-md">
-              <div 
+              <div
                 className="h-full min-h-[2rem] sm:min-h-0 bg-green-500 crt-bar transition-all duration-1000"
                 style={{
                   width: (() => {
@@ -212,7 +212,7 @@ const StatContent: React.FC<StatContentProps> = ({
               </div>
             </div>
           </div>
-          
+
           {/* AP - Hidden on mobile, shown on desktop */}
           <div className="hidden sm:flex items-center gap-3">
             <span className="terminal-label text-lg">AP</span>
@@ -230,16 +230,16 @@ const StatContent: React.FC<StatContentProps> = ({
           <div className="flex flex-col items-center">
             {/* Head */}
             <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
-              <img 
-                src={`${import.meta.env.BASE_URL}icons/FO4HealthConditionIcons/icon_condition_head_1.svg`} 
+              <img
+                src={`${import.meta.env.BASE_URL}icons/FO4HealthConditionIcons/icon_condition_head_1.svg`}
                 alt="Character Head"
                 className="w-full h-full object-contain status-icon"
               />
             </div>
             {/* Body */}
             <div className="w-16 h-20 sm:w-20 sm:h-24 flex items-center justify-center -mt-1.5 sm:-mt-2">
-              <img 
-                src={`${import.meta.env.BASE_URL}icons/FO4HealthConditionIcons/icon_condition_body_0.svg`} 
+              <img
+                src={`${import.meta.env.BASE_URL}icons/FO4HealthConditionIcons/icon_condition_body_0.svg`}
                 alt="Character Body"
                 className="w-full h-full object-contain status-icon"
               />
@@ -286,7 +286,7 @@ const StatContent: React.FC<StatContentProps> = ({
                     +{effect.totalValue}%
                   </div>
                 </div>
-                
+
                 {/* Contributors breakdown */}
                 <div className="space-y-2">
                   <div className="text-xs terminal-label mb-2">CONTRIBUTORS:</div>
@@ -295,22 +295,22 @@ const StatContent: React.FC<StatContentProps> = ({
                       <div className="flex items-center gap-2">
                         <div className="w-4 h-4 flex items-center justify-center">
                           {contributor.itemType === 'WEAPON' && (
-                            <img 
-                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_104.svg`} 
+                            <img
+                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_104.svg`}
                               alt="Weapon"
                               className="w-full h-full object-contain status-icon"
                             />
                           )}
                           {contributor.itemType === 'APPAREL' && (
-                            <img 
-                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_36.svg`} 
+                            <img
+                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_170.svg`}
                               alt="Apparel"
                               className="w-full h-full object-contain status-icon"
                             />
                           )}
                           {contributor.itemType !== 'WEAPON' && contributor.itemType !== 'APPAREL' && (
-                            <img 
-                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_20.svg`} 
+                            <img
+                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_160.svg`}
                               alt="Temporary"
                               className="w-full h-full object-contain status-icon"
                             />
@@ -330,23 +330,23 @@ const StatContent: React.FC<StatContentProps> = ({
               </div>
             ))}
           </div>
-          
+
           {/* Legend */}
           <div className="mt-6 flex justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 flex items-center justify-center">
-                <img 
-                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_104.svg`} 
+                <img
+                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_104.svg`}
                   alt="Weapon"
                   className="w-full h-full object-contain status-icon"
                 />
               </div>
               <span className="crt-dim">Weapons</span>
             </div>
-            <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2">
               <div className="w-4 h-4 flex items-center justify-center">
-                <img 
-                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_36.svg`} 
+                <img
+                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_170.svg`}
                   alt="Apparel"
                   className="w-full h-full object-contain status-icon"
                 />
@@ -355,8 +355,8 @@ const StatContent: React.FC<StatContentProps> = ({
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 flex items-center justify-center">
-                <img 
-                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_20.svg`} 
+                <img
+                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_160.svg`}
                   alt="Temporary"
                   className="w-full h-full object-contain status-icon"
                 />
@@ -391,7 +391,7 @@ const StatContent: React.FC<StatContentProps> = ({
                         {Math.floor(effect.duration / 60)}:{(effect.duration % 60).toString().padStart(2, '0')}
                       </div>
                       <div className="w-16 h-2 crt-border mt-2 relative">
-                        <div 
+                        <div
                           className="h-full bg-green-500 crt-bar transition-all duration-1000"
                           style={{width: `${(effect.duration / effect.maxDuration) * 100}%`}}
                         ></div>
@@ -414,7 +414,7 @@ const StatContent: React.FC<StatContentProps> = ({
         <div key={index} className="space-y-1">
           <div className="terminal-label">{attr.name.toUpperCase()}</div>
           <div className="h-6 crt-border relative">
-            <div 
+            <div
               className="h-full crt-bar bg-green-500 transition-none"
               style={{width: `${attr.level * 10}%`}}
             ></div>
@@ -434,8 +434,8 @@ const StatContent: React.FC<StatContentProps> = ({
       <div className="crt-text p-6 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
         {perks.map((perk, index) => (
-          <div 
-            key={index} 
+          <div
+            key={index}
             className={`crt-box cursor-pointer p-6 flex flex-col items-center text-center min-h-[200px] justify-center ${selectedPerk === index ? 'crt-box-active' : ''}`}
             onMouseEnter={() => playHoverSound()}
             onClick={() => {
@@ -444,8 +444,8 @@ const StatContent: React.FC<StatContentProps> = ({
             }}
           >
             <div className="w-20 h-20 mb-4 flex items-center justify-center">
-              <img 
-                src={perk.icon} 
+              <img
+                src={perk.icon}
                 alt={perk.name}
                 className="w-full h-full object-contain perk-icon"
               />
@@ -464,8 +464,8 @@ const StatContent: React.FC<StatContentProps> = ({
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-6">
               <div className="w-24 h-24 flex items-center justify-center flex-shrink-0">
-                <img 
-                  src={perks[selectedPerk].icon} 
+                <img
+                  src={perks[selectedPerk].icon}
                   alt={perks[selectedPerk].name}
                   className="w-full h-full object-contain perk-icon"
                 />
@@ -494,7 +494,7 @@ const StatContent: React.FC<StatContentProps> = ({
             <span className="text-sm crt-dim">{skill.years} YEARS</span>
           </div>
           <div className="h-8 crt-border relative">
-            <div 
+            <div
               className="h-full bg-green-500 crt-bar relative transition-none"
               style={{width: `${skill.level * 20}%`}}
             >
@@ -525,4 +525,4 @@ const StatContent: React.FC<StatContentProps> = ({
   }
 };
 
-export default StatContent; 
+export default StatContent;
