@@ -95,12 +95,12 @@ export interface Quest {
 }
 
 export interface ActiveSubTab {
-  STAT: string;
-  INV: string;
-  DATA: string;
+  STAT: StatSubTab;
+  INV: InvSubTab;
+  DATA: DataSubTab;
 }
 
 export type TabType = 'STAT' | 'INV' | 'DATA' | 'MAP' | 'RADIO';
 export type StatSubTab = 'STATUS' | 'SPECIAL' | 'PERKS' | 'SKILLS';
 export type InvSubTab = 'WEAPONS' | 'APPAREL' | 'AID' | 'MISC' | 'JUNK' | 'MODS' | 'AMMO';
-export type DataSubTab = 'QUESTS'; 
+export type DataSubTab = 'QUESTS';

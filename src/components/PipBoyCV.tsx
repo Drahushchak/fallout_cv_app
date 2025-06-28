@@ -54,21 +54,21 @@ const PipBoyCV: React.FC = () => {
           ...effect,
           duration: Math.max(0, effect.duration - 1)
         }));
-        
+
         // Check for effects that just expired (went from 1 to 0)
         const expiredEffects = prevEffects.filter((prevEffect, index) => {
           const updatedEffect = updatedEffects[index];
           return prevEffect.duration === 1 && updatedEffect.duration === 0;
         });
-        
+
         // Play wear-off sound for each expired effect
         if (expiredEffects.length > 0) {
           playWearOffSound();
         }
-        
+
         // Remove expired effects (duration = 0)
         const activeEffects = updatedEffects.filter(effect => effect.duration > 0);
-        
+
         // Effects are automatically removed when duration hits 0
         // This will trigger recalculation of all effects in the STATUS tab
         return activeEffects;
@@ -79,9 +79,9 @@ const PipBoyCV: React.FC = () => {
 
   // Handle quest tracking toggle
   const handleQuestToggle = (questIndex: number) => {
-    setQuests(prevQuests => 
-      prevQuests.map((quest, index) => 
-        index === questIndex 
+    setQuests(prevQuests =>
+      prevQuests.map((quest, index) =>
+        index === questIndex
           ? { ...quest, tracked: !quest.tracked }
           : quest
       )
@@ -94,7 +94,7 @@ const PipBoyCV: React.FC = () => {
     if (!aidItem || aidItem.qty <= 0) return;
 
     // Remove existing effect of same item (no stacking)
-    setTemporaryEffects(prevEffects => 
+    setTemporaryEffects(prevEffects =>
       prevEffects.filter(effect => effect.itemName !== itemName)
     );
 
@@ -112,8 +112,8 @@ const PipBoyCV: React.FC = () => {
     // Reduce item quantity
     setInventory(prevInventory => ({
       ...prevInventory,
-      AID: prevInventory.AID.map((item, index) => 
-        index === itemIndex 
+      AID: prevInventory.AID.map((item, index) =>
+        index === itemIndex
           ? { ...item, qty: Math.max(0, item.qty - 1) }
           : item
       )
@@ -127,7 +127,7 @@ const PipBoyCV: React.FC = () => {
       case 'STAT':
         return (
           <StatContent
-            activeSubTab={activeSubTab.STAT as any}
+            activeSubTab={activeSubTab.STAT}
             candidateData={candidateData}
             special={special}
             perks={perks}
@@ -143,7 +143,7 @@ const PipBoyCV: React.FC = () => {
       case 'INV':
         return (
           <InvContent
-            activeSubTab={activeSubTab.INV as any}
+            activeSubTab={activeSubTab.INV}
             inventory={inventory}
             equippedItems={equippedItems}
             setEquippedItems={setEquippedItems}
@@ -177,22 +177,22 @@ const PipBoyCV: React.FC = () => {
   return (
     <div className="h-screen w-screen bg-black font-mono relative overflow-hidden flex flex-col">
       <CRTStyles />
-      
+
       {/* Scanline effect - positioned at top level for full viewport coverage */}
       <div className="scanline"></div>
-      
+
       <div className="h-full crt-container flex-1 p-4 md:p-6 lg:p-8 relative flex items-center justify-center">
         {/* Noise overlay */}
         <div className="noise"></div>
-        
+
         {/* Main screen */}
         <div className={`w-full max-w-7xl mx-auto relative z-20 flex flex-col h-full ${glitchEffect ? 'glitch' : ''}`}>
           <div className="h-full crt-border rounded-lg bg-black bg-opacity-90 flex-1 flex flex-col">
             {/* Main tabs */}
             <div className="flex flex-wrap justify-around gap-1 sm:gap-2 p-2 sm:p-3 md:p-5 border-b-2 border-green-500 flex-shrink-0">
               {['STAT', 'INV', 'DATA', 'MAP', 'RADIO'].map(tab => (
-                <button 
-                  key={tab} 
+                <button
+                  key={tab}
                   className={`crt-tab ${activeTab === tab ? 'active' : ''}`}
                   onMouseEnter={() => playHoverSound()}
                   onClick={() => {
@@ -215,8 +215,8 @@ const PipBoyCV: React.FC = () => {
             {getSubTabs().length > 0 && (
               <div className="flex flex-wrap gap-2 sm:gap-3 px-2 sm:px-3 md:px-5 py-2 sm:py-3 md:py-4 border-b border-green-500 flex-shrink-0">
                 {getSubTabs().map(subTab => (
-                  <button 
-                    key={subTab} 
+                  <button
+                    key={subTab}
                     className={`crt-subtab ${activeSubTab[activeTab as keyof ActiveSubTab] === subTab ? 'active' : ''}`}
                     onMouseEnter={() => playHoverSound()}
                     onClick={() => {
@@ -247,4 +247,4 @@ const PipBoyCV: React.FC = () => {
   );
 };
 
-export default PipBoyCV; 
+export default PipBoyCV;
