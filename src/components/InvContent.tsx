@@ -13,7 +13,7 @@ interface InvContentProps {
 }
 
 const InvContent: React.FC<InvContentProps> = ({ activeSubTab, inventory, equippedItems, setEquippedItems, onAidConsumption }) => {
-  const { playSelectSound, playHoverSound, playEquipSound, playUnequipSound } = useSoundEffects();
+  const { playSelectSound, playHoverSound, playEquipSound, playUnequipSound, playAidSound } = useSoundEffects();
   const [hoveredItem, setHoveredItem] = useState<InventoryItem | null>(null);
   const [selectedItem, setSelectedItem] = useState<InventoryItem | null>(null);
   const [longPressTimer, setLongPressTimer] = useState<number | null>(null);
@@ -102,7 +102,7 @@ ${candidateData.education}
 
     // Handle AID item consumption
     if (activeSubTab === 'AID' && onAidConsumption && item.qty > 0) {
-      playSelectSound();
+      playAidSound();
       onAidConsumption(item.name, index);
       return;
     }

@@ -19,10 +19,10 @@ export const useSoundEffects = () => {
       return audio;
     };
 
-    // Load main hum sound (background ambient)  
+    // Load main hum sound (background ambient)
     const soundBasePath = `${import.meta.env.BASE_URL}audio/sound_effects`;
     humRef.current = loadSound('hum', `${soundBasePath}/PipBoy/UI_PipBoy_Hum_LP.wav`, true);
-    
+
     // Load UI interaction sounds
     loadSound('ok', `${soundBasePath}/PipBoy/UI_Pipboy_OK.wav`);
     loadSound('okPress', `${soundBasePath}/PipBoy/UI_Pipboy_OK_Press.wav`);
@@ -46,16 +46,20 @@ export const useSoundEffects = () => {
     loadSound('lightOff', `${soundBasePath}/PipBoy/UI_PipBoy_LightOff.wav`);
     loadSound('radioOn', `${soundBasePath}/PipBoy/Radio/UI_Pipboy_Radio_On.wav`);
     loadSound('radioOff', `${soundBasePath}/PipBoy/Radio/UI_Pipboy_Radio_Off.wav`);
-    
+
     // Load health/chem wear-off sound
     loadSound('chemsWearOff', `${soundBasePath}/Health/UI_Health_Chems_WearOff_Male_01.wav`);
-    
+
     // Load IdleSpecialA sounds for equipping/unequipping
     loadSound('idleSpecialDown1', `${soundBasePath}/PipBoy/UI_PiipBoy_IdleSpecialA_Down_01.wav`);
     loadSound('idleSpecialDown2', `${soundBasePath}/PipBoy/UI_PiipBoy_IdleSpecialA_Down_02.wav`);
     loadSound('idleSpecialUp1', `${soundBasePath}/PipBoy/UI_PiipBoy_IdleSpecialA_Up_01.wav`);
     loadSound('idleSpecialUp2', `${soundBasePath}/PipBoy/UI_PiipBoy_IdleSpecialA_Up_02.wav`);
-    
+
+    // Load Chems sounds for AID item consumption
+    loadSound('chemsUse1', `${soundBasePath}/Chems/UI_Chems_Cook_01_LPM.wav`);
+    loadSound('chemsUse2', `${soundBasePath}/Chems/UI_Chems_Cook_02_LPM.wav`);
+
     // Start the background hum when component mounts
     const startHum = () => {
       if (humRef.current) {
@@ -66,14 +70,14 @@ export const useSoundEffects = () => {
 
     // Auto-play hum after a brief delay or on user interaction
     const timer = setTimeout(startHum, 1000);
-    
+
     // Also try to start on first user interaction
     const handleFirstInteraction = () => {
       startHum();
       document.removeEventListener('click', handleFirstInteraction);
       document.removeEventListener('keydown', handleFirstInteraction);
     };
-    
+
     document.addEventListener('click', handleFirstInteraction);
     document.addEventListener('keydown', handleFirstInteraction);
 
@@ -81,7 +85,7 @@ export const useSoundEffects = () => {
       clearTimeout(timer);
       document.removeEventListener('click', handleFirstInteraction);
       document.removeEventListener('keydown', handleFirstInteraction);
-      
+
       // Cleanup audio objects
       Object.values(soundsRef.current).forEach(audio => {
         audio.pause();
@@ -159,6 +163,11 @@ export const useSoundEffects = () => {
     playSound('chemsWearOff', 0.5);
   }, [playSound]);
 
+  // Play AID item consumption sound
+  const playAidSound = useCallback(() => {
+    playRandomSound(['chemsUse1', 'chemsUse2'], 0.4);
+  }, [playRandomSound]);
+
   // Control background hum
   const setHumVolume = useCallback((volume: number) => {
     if (humRef.current) {
@@ -192,8 +201,9 @@ export const useSoundEffects = () => {
     playEquipSound,
     playUnequipSound,
     playWearOffSound,
+    playAidSound,
     setHumVolume,
     pauseHum,
     resumeHum
   };
-}; 
+};
