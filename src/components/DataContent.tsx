@@ -12,12 +12,12 @@ const DataContent: React.FC<DataContentProps> = ({ quests, onQuestToggle }) => {
   const { playQuestSound, playHoverSound } = useSoundEffects();
   const handleQuestClick = (questIndex: number) => {
     const quest = quests[questIndex];
-    
+
     // Only allow tracking of IN PROGRESS quests
     if (quest.status !== 'IN PROGRESS') {
       return;
     }
-    
+
     const willBeTracked = !quest.tracked;
     playQuestSound(willBeTracked);
     onQuestToggle(questIndex);
@@ -31,8 +31,8 @@ const DataContent: React.FC<DataContentProps> = ({ quests, onQuestToggle }) => {
           <div className="text-xs crt-dim">Only IN PROGRESS quests can be tracked for objective monitoring</div>
         </div>
       {quests.map((quest, index) => (
-        <div 
-          key={index} 
+        <div
+          key={index}
           className={`crt-box p-5 ${quest.status === 'IN PROGRESS' ? 'cursor-pointer crt-hover' : 'cursor-not-allowed opacity-75'} ${quest.tracked ? 'crt-box-active' : ''}`}
           onMouseEnter={() => quest.status === 'IN PROGRESS' && playHoverSound()}
           onClick={() => handleQuestClick(index)}
@@ -43,9 +43,7 @@ const DataContent: React.FC<DataContentProps> = ({ quests, onQuestToggle }) => {
               {quest.tracked && (
                 <span className="text-green-400 text-sm terminal-label">TRACKED</span>
               )}
-              <span className="crt-badge">
-                {quest.status}
-              </span>
+              <span className="crt-badge whitespace-nowrap">{quest.status}</span>
             </div>
           </div>
           <div className="crt-dim mb-3">{quest.company} | {quest.period}</div>
@@ -62,4 +60,4 @@ const DataContent: React.FC<DataContentProps> = ({ quests, onQuestToggle }) => {
   );
 };
 
-export default DataContent; 
+export default DataContent;
