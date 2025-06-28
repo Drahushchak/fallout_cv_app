@@ -72,7 +72,7 @@ ${candidateData.education}
       setSelectedItem(item);
       playHoverSound();
     }, 500); // 500ms for long press
-    
+
     setLongPressTimer(timer);
     setIsLongPress(false);
   };
@@ -99,31 +99,31 @@ ${candidateData.education}
       handleDownloadCV();
       return;
     }
-    
+
     // Handle AID item consumption
     if (activeSubTab === 'AID' && onAidConsumption && item.qty > 0) {
       playSelectSound();
       onAidConsumption(item.name, index);
       return;
     }
-    
+
     // Handle equipping for WEAPONS and APPAREL
     if (activeSubTab === 'WEAPONS' || activeSubTab === 'APPAREL') {
       const itemKey = `${activeSubTab}-${index}`;
       const wasEquipped = equippedItems[itemKey] || false;
-      
+
       // Play appropriate sound based on equipping or unequipping
       if (wasEquipped) {
         playUnequipSound();
       } else {
         playEquipSound();
       }
-      
+
       if (activeSubTab === 'WEAPONS') {
         // For weapons: only one can be equipped at a time
         setEquippedItems(prev => {
           const newEquipped = { ...prev };
-          
+
           // If equipping this weapon, unequip all other weapons first
           if (!prev[itemKey]) {
             // Find and unequip all other weapons
@@ -133,7 +133,7 @@ ${candidateData.education}
               }
             });
           }
-          
+
           // Toggle the current weapon
           newEquipped[itemKey] = !prev[itemKey];
           return newEquipped;
@@ -142,7 +142,7 @@ ${candidateData.education}
         // For apparel: check body parts
         setEquippedItems(prev => {
           const newEquipped = { ...prev };
-          
+
           // If equipping this apparel item, check for body part conflicts
           if (!prev[itemKey] && item.bodyPart) {
             // Find and unequip any apparel covering the same body part
@@ -156,7 +156,7 @@ ${candidateData.education}
               }
             });
           }
-          
+
           // Toggle the current apparel item
           newEquipped[itemKey] = !prev[itemKey];
           return newEquipped;
@@ -179,7 +179,7 @@ ${candidateData.education}
 
   const items = inventory[activeSubTab] || [];
   const filteredItems = items.filter(item => item.qty > 0);
-  
+
   // Use selectedItem on mobile, hoveredItem on desktop
   const displayedItem = selectedItem || hoveredItem;
 
@@ -190,19 +190,19 @@ ${candidateData.education}
         {/* Items List */}
         <div className="lg:col-span-8 order-1 lg:order-1">
           {/* Mobile-friendly header */}
-          <div className="hidden sm:grid grid-cols-[24px_1fr_80px_80px_80px] gap-4 pb-2 crt-divider terminal-label">
+          <div className="hidden sm:grid grid-cols-[24px_1fr_80px_80px_80px] gap-4 py-2 crt-divider terminal-label">
             <span></span>
             <span>ITEM</span>
             <span className="text-center">QTY</span>
             <span className="text-center">WT</span>
             <span className="text-center">VAL</span>
           </div>
-          
+
           {/* Mobile header */}
           <div className="sm:hidden pb-2 crt-divider terminal-label text-center">
             INVENTORY ITEMS
           </div>
-          
+
           <div className="max-h-96 lg:max-h-96 overflow-y-auto crt-scroll">
             {filteredItems.map((item) => {
               // Find the original index in the unfiltered array for proper handling
@@ -210,7 +210,7 @@ ${candidateData.education}
               return (
                 <div key={originalIndex}>
                   {/* Mobile Layout */}
-                  <div 
+                  <div
                     className={`
                       sm:hidden cursor-pointer crt-hover transition-all crt-border mb-2 p-3
                       ${isEquipped(originalIndex) ? 'crt-box-active' : ''}
@@ -238,9 +238,9 @@ ${candidateData.education}
                       <span>Value: {item.value}</span>
                     </div>
                   </div>
-                  
+
                   {/* Desktop Layout */}
-                  <div 
+                  <div
                     className={`
                       hidden sm:grid grid-cols-[24px_1fr_80px_80px_80px] gap-4 py-3 crt-row cursor-pointer crt-hover transition-all
                       ${isEquipped(originalIndex) ? 'crt-box-active' : ''}
@@ -286,7 +286,7 @@ ${candidateData.education}
                     )}
                   </div>
                 </div>
-                
+
                 {displayedItem.description && (
                   <div>
                     <div className="terminal-label text-sm mb-2">DESCRIPTION:</div>
@@ -295,7 +295,7 @@ ${candidateData.education}
                     </div>
                   </div>
                 )}
-                
+
                 {displayedItem.effects && displayedItem.effects.length > 0 && (
                   <div>
                     <div className="terminal-label text-sm mb-2">EFFECTS:</div>
@@ -308,7 +308,7 @@ ${candidateData.education}
                     </div>
                   </div>
                 )}
-                
+
                 {isEquippable(activeSubTab) && (
                   <div className="pt-3 border-t border-green-500 border-opacity-30">
                     <div className="text-sm crt-dim break-words">
@@ -317,7 +317,7 @@ ${candidateData.education}
                     </div>
                   </div>
                 )}
-                
+
                 {activeSubTab === 'AID' && displayedItem.effects && (
                   <div className="pt-3 border-t border-orange-500 border-opacity-30">
                     <div className="text-sm text-orange-300 break-words">
@@ -329,7 +329,7 @@ ${candidateData.education}
                     </div>
                   </div>
                 )}
-                
+
                 {displayedItem.action && (
                   <div className="pt-3 border-t border-green-500 border-opacity-30">
                     <div className="text-sm crt-dim break-words">
@@ -353,4 +353,4 @@ ${candidateData.education}
   );
 };
 
-export default InvContent; 
+export default InvContent;
