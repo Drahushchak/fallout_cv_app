@@ -2,6 +2,7 @@ import React from 'react';
 import { useSoundEffects } from '../hooks/useSoundEffects';
 import Content from './Content';
 import FalloutMap from './FalloutMap';
+import Icon from './Icon';
 import type { Quest } from '../types';
 
 interface MapContentProps {
@@ -24,26 +25,29 @@ const MapContent: React.FC<MapContentProps> = ({ quests }) => {
             <h4 className="text-sm terminal-value mb-2">LOCATION STATUS</h4>
             <div className="text-xs space-y-1">
               <div className="flex items-center gap-2">
-                <img
-                  src={`${import.meta.env.BASE_URL}icons/FO4StatsPageIcons/icon_74.svg`}
+                <Icon
+                  name="stat-radiation-minimal"
+                  size={16}
+                  className="object-contain map-icon"
                   alt="Radiation"
-                  className="w-4 h-4 object-contain map-icon"
                 />
                 <span>RADIATION: MINIMAL</span>
               </div>
               <div className="flex items-center gap-2">
-                <img
-                  src={`${import.meta.env.BASE_URL}icons/FO4StatsPageIcons/icon_76.svg`}
+                <Icon
+                  name="stat-temperature"
+                  size={16}
+                  className="object-contain map-icon"
                   alt="Temperature"
-                  className="w-4 h-4 object-contain map-icon"
                 />
                 <span>TEMPERATURE: MODERATE</span>
               </div>
               <div className="flex items-center gap-2">
-                <img
-                  src={`${import.meta.env.BASE_URL}icons/FO4StatsPageIcons/icon_104.svg`}
+                <Icon
+                  name="stat-signal"
+                  size={16}
+                  className="object-contain map-icon"
                   alt="Signal"
-                  className="w-4 h-4 object-contain map-icon"
                 />
                 <span>SIGNAL: STRONG</span>
               </div>

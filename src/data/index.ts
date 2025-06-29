@@ -219,42 +219,40 @@ export const special: SpecialAttribute[] = [
   { name: "Leadership", level: 6, desc: "Leading projects and mentoring junior developers" }
 ];
 
-const getIconPath = (path: string) => `${import.meta.env.BASE_URL}icons/${path}`;
-
 export const perks: Perk[] = [
   {
     name: "Redis Ranger",
-    icon: getIconPath("FO4SpecialIcons/icon_intelligence_1.svg"),
+    iconName: "intelligence-1",
     desc: "Master of in-memory data structures. +50% cache hit rate, -30% response time",
     details: "3 years managing Redis clusters, optimization expert"
   },
   {
     name: "PostgreSQL Paladin",
-    icon: getIconPath("FO4DataPageIcons/icon_4.svg"),
+    iconName: "data-admin",
     desc: "Database guardian. Query optimization, complex joins, stored procedures",
     details: "5 years of PostgreSQL, including replication and performance tuning"
   },
   {
     name: "Grafana Explorer",
-    icon: getIconPath("FO4StatsPageIcons/icon_100.svg"),
+    iconName: "stat-level",
     desc: "Visualization virtuoso. Creates dashboards that tell stories",
     details: "Built 20+ production dashboards, expert in metrics and alerting"
   },
   {
     name: "GraphQL Gunslinger",
-    icon: getIconPath("FO4InvPageIcons/icon_122.svg"),
+    iconName: "armor-chest",
     desc: "Quick-draw API designer. Efficient queries, perfect schemas",
     details: "Designed and implemented 5 GraphQL APIs from scratch"
   },
   {
     name: "Docker Dweller",
-    icon: getIconPath("FO4PipboyMenuIcons/icon_14.svg"),
+    iconName: "menu-stats",
     desc: "Container craftsman. Microservices architecture specialist",
     details: "Containerized 15+ applications, Kubernetes deployment experience"
   },
   {
     name: "React Ronin",
-    icon: getIconPath("FO4SpecialIcons/icon_intelligence_3.svg"),
+    iconName: "intelligence-3",
     desc: "Component samurai. Hooks master, performance optimizer",
     details: "4 years building scalable React applications"
   }

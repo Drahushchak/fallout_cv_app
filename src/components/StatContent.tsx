@@ -3,6 +3,7 @@ import type { CandidateData, SpecialAttribute, Perk, Skill, StatSubTab, Inventor
 import { useSoundEffects } from '../hooks/useSoundEffects';
 import { calculateAllEffects, getProcessedEffects, getLegacyStats } from '../utils/effectsCalculator';
 import Content from './Content';
+import Icon from './Icon';
 
 interface StatContentProps {
   activeSubTab: StatSubTab;
@@ -230,18 +231,20 @@ const StatContent: React.FC<StatContentProps> = ({
           <div className="flex flex-col items-center">
             {/* Head */}
             <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
-              <img
-                src={`${import.meta.env.BASE_URL}icons/FO4HealthConditionIcons/icon_condition_head_1.svg`}
-                alt="Character Head"
+              <Icon
+                name="head-healthy"
+                size="100%"
                 className="w-full h-full object-contain status-icon"
+                alt="Character Head"
               />
             </div>
             {/* Body */}
             <div className="w-16 h-20 sm:w-20 sm:h-24 flex items-center justify-center -mt-1.5 sm:-mt-2">
-              <img
-                src={`${import.meta.env.BASE_URL}icons/FO4HealthConditionIcons/icon_condition_body_0.svg`}
-                alt="Character Body"
+              <Icon
+                name="body-healthy"
+                size="100%"
                 className="w-full h-full object-contain status-icon"
+                alt="Character Body"
               />
             </div>
           </div>
@@ -295,24 +298,27 @@ const StatContent: React.FC<StatContentProps> = ({
                       <div className="flex items-center gap-2">
                         <div className="w-4 h-4 flex items-center justify-center">
                           {contributor.itemType === 'WEAPON' && (
-                            <img
-                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_104.svg`}
-                              alt="Weapon"
+                            <Icon
+                              name="weapon-shotgun"
+                              size="100%"
                               className="w-full h-full object-contain status-icon"
+                              alt="Weapon"
                             />
                           )}
                           {contributor.itemType === 'APPAREL' && (
-                            <img
-                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_170.svg`}
-                              alt="Apparel"
+                            <Icon
+                              name="container-safe"
+                              size="100%"
                               className="w-full h-full object-contain status-icon"
+                              alt="Apparel"
                             />
                           )}
                           {contributor.itemType !== 'WEAPON' && contributor.itemType !== 'APPAREL' && (
-                            <img
-                              src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_160.svg`}
-                              alt="Temporary"
+                            <Icon
+                              name="item-currency"
+                              size="100%"
                               className="w-full h-full object-contain status-icon"
+                              alt="Temporary"
                             />
                           )}
                         </div>
@@ -335,30 +341,33 @@ const StatContent: React.FC<StatContentProps> = ({
           <div className="mt-6 flex justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 flex items-center justify-center">
-                <img
-                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_104.svg`}
-                  alt="Weapon"
+                <Icon
+                  name="weapon-shotgun"
+                  size="100%"
                   className="w-full h-full object-contain status-icon"
+                  alt="Weapon"
                 />
               </div>
               <span className="crt-dim">Weapons</span>
             </div>
-                        <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <div className="w-4 h-4 flex items-center justify-center">
-                <img
-                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_170.svg`}
-                  alt="Apparel"
+                <Icon
+                  name="container-safe"
+                  size="100%"
                   className="w-full h-full object-contain status-icon"
+                  alt="Apparel"
                 />
               </div>
               <span className="crt-dim">Apparel</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 flex items-center justify-center">
-                <img
-                  src={`${import.meta.env.BASE_URL}icons/FO4InvPageIcons/icon_160.svg`}
-                  alt="Temporary"
+                <Icon
+                  name="item-currency"
+                  size="100%"
                   className="w-full h-full object-contain status-icon"
+                  alt="Temporary"
                 />
               </div>
               <span className="crt-dim">Temporary</span>
@@ -444,11 +453,20 @@ const StatContent: React.FC<StatContentProps> = ({
             }}
           >
             <div className="w-20 h-20 mb-4 flex items-center justify-center">
-              <img
-                src={perk.icon}
-                alt={perk.name}
-                className="w-full h-full object-contain perk-icon"
-              />
+              {perk.iconName ? (
+                <Icon
+                  name={perk.iconName}
+                  size="100%"
+                  className="w-full h-full object-contain perk-icon"
+                  alt={perk.name}
+                />
+              ) : (
+                <img
+                  src={perk.icon}
+                  alt={perk.name}
+                  className="w-full h-full object-contain perk-icon"
+                />
+              )}
             </div>
             <div className="terminal-label text-sm font-bold mb-2 leading-tight">
               {perk.name}
@@ -464,11 +482,20 @@ const StatContent: React.FC<StatContentProps> = ({
           <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-6">
               <div className="w-24 h-24 flex items-center justify-center flex-shrink-0">
-                <img
-                  src={perks[selectedPerk].icon}
-                  alt={perks[selectedPerk].name}
-                  className="w-full h-full object-contain perk-icon"
-                />
+                {perks[selectedPerk].iconName ? (
+                  <Icon
+                    name={perks[selectedPerk].iconName}
+                    size="100%"
+                    className="w-full h-full object-contain perk-icon"
+                    alt={perks[selectedPerk].name}
+                  />
+                ) : (
+                  <img
+                    src={perks[selectedPerk].icon}
+                    alt={perks[selectedPerk].name}
+                    className="w-full h-full object-contain perk-icon"
+                  />
+                )}
               </div>
               <div className="flex-1">
                 <h3 className="text-lg sm:text-2xl terminal-value mb-3 font-bold">{perks[selectedPerk].name}</h3>

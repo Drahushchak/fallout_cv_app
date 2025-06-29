@@ -4,6 +4,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useSoundEffects } from '../hooks/useSoundEffects';
 import type { Quest } from '../types';
+import { getIconUrl } from './Icon';
 
 // Fix for default markers in React Leaflet
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl;
@@ -228,11 +229,11 @@ const FalloutMap: React.FC<{ quests: Quest[] }> = ({ quests }) => {
     return () => {
       document.head.removeChild(style);
     };
-  }, []);
+      }, []);
 
   // Custom icon for the current position marker
   const falloutIcon = new L.Icon({
-    iconUrl: `${import.meta.env.BASE_URL}icons/FO4MapMarkers/icon_94.svg`,
+    iconUrl: getIconUrl('marker-player'),
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [0, -32]
@@ -240,7 +241,7 @@ const FalloutMap: React.FC<{ quests: Quest[] }> = ({ quests }) => {
 
   // Custom icon for quest markers
   const questIcon = new L.Icon({
-    iconUrl: `${import.meta.env.BASE_URL}icons/FO4MapMarkers/icon_91.svg`,
+    iconUrl: getIconUrl('quest-main'),
     iconSize: [28, 28],
     iconAnchor: [14, 28],
     popupAnchor: [0, -28]

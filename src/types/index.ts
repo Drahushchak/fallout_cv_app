@@ -18,7 +18,8 @@ export interface SpecialAttribute {
 
 export interface Perk {
   name: string;
-  icon: string;
+  icon?: string; // Legacy icon path (optional for backward compatibility)
+  iconName?: string; // Icon name for the new Icon component system
   desc: string;
   details: string;
 }
