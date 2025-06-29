@@ -153,7 +153,7 @@ const PipBoyCV: React.FC = () => {
       case 'DATA':
         return <DataContent quests={quests} onQuestToggle={handleQuestToggle} />;
       case 'MAP':
-        return <MapContent />;
+        return <MapContent quests={quests} />;
       case 'RADIO':
         return <RadioContent />;
       default:

@@ -92,6 +92,7 @@ export interface Quest {
   description: string;
   achievements: string[];
   tracked?: boolean;
+  coordinates?: [number, number]; // [latitude, longitude] for map display
 }
 
 export interface ActiveSubTab {

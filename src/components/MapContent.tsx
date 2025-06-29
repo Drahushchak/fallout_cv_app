@@ -2,15 +2,20 @@ import React from 'react';
 import { useSoundEffects } from '../hooks/useSoundEffects';
 import Content from './Content';
 import FalloutMap from './FalloutMap';
+import type { Quest } from '../types';
 
-const MapContent: React.FC = () => {
+interface MapContentProps {
+  quests: Quest[];
+}
+
+const MapContent: React.FC<MapContentProps> = ({ quests }) => {
   const { playMapSound } = useSoundEffects();
 
   return (
     <Content>
       <div className="crt-text p-4 h-full flex flex-col">
         <div className="flex-1">
-          <FalloutMap />
+          <FalloutMap quests={quests} />
         </div>
 
         {/* Additional location info at the bottom */}
@@ -57,7 +62,7 @@ const MapContent: React.FC = () => {
 
         {/* Interactive sound element */}
         <div className="mt-3 text-center">
-                    <button
+          <button
             className="crt-subtab text-xs"
             onClick={() => playMapSound()}
             onMouseEnter={() => playMapSound()}

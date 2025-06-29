@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaf
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useSoundEffects } from '../hooks/useSoundEffects';
+import type { Quest } from '../types';
 
 // Fix for default markers in React Leaflet
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl;
@@ -84,7 +85,7 @@ const MapEventHandler: React.FC = () => {
   return null;
 };
 
-const FalloutMap: React.FC = () => {
+const FalloutMap: React.FC<{ quests: Quest[] }> = ({ quests }) => {
   const { playConfirmSound } = useSoundEffects();
 
   useEffect(() => {
@@ -229,18 +230,29 @@ const FalloutMap: React.FC = () => {
     };
   }, []);
 
-  // Custom icon for the marker to match Fallout style
+  // Custom icon for the current position marker
   const falloutIcon = new L.Icon({
-    iconUrl: `${import.meta.env.BASE_URL}icons/FO4MapMarkers/icon_3.svg`,
+    iconUrl: `${import.meta.env.BASE_URL}icons/FO4MapMarkers/icon_94.svg`,
     iconSize: [32, 32],
     iconAnchor: [16, 32],
     popupAnchor: [0, -32]
+  });
+
+  // Custom icon for quest markers
+  const questIcon = new L.Icon({
+    iconUrl: `${import.meta.env.BASE_URL}icons/FO4MapMarkers/icon_91.svg`,
+    iconSize: [28, 28],
+    iconAnchor: [14, 28],
+    popupAnchor: [0, -28]
   });
 
   // Handle marker click sound
   const handleMarkerClick = () => {
     playConfirmSound();
   };
+
+  // Get tracked quests with coordinates
+  const trackedQuests = quests.filter(quest => quest.tracked && quest.coordinates);
 
   return (
     <div className="w-full h-full flex flex-col">
@@ -263,6 +275,7 @@ const FalloutMap: React.FC = () => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
 
+          {/* Current position marker */}
           <Marker position={BOSTON_COORDS} icon={falloutIcon} eventHandlers={{ click: handleMarkerClick }}>
             <Popup>
               <div className="text-center">
@@ -280,6 +293,35 @@ const FalloutMap: React.FC = () => {
               </div>
             </Popup>
           </Marker>
+
+          {/* Quest markers for tracked quests */}
+          {trackedQuests.map((quest, index) => (
+            <Marker
+              key={index}
+              position={quest.coordinates!}
+              icon={questIcon}
+              eventHandlers={{ click: handleMarkerClick }}
+            >
+              <Popup>
+                <div className="text-center">
+                  <div className="font-bold mb-1">ACTIVE MISSION</div>
+                  <div className="text-sm mb-2 font-bold">{quest.name}</div>
+                  <div className="text-xs mb-2">{quest.company}</div>
+                  <div className="text-xs mb-2 crt-dim">{quest.period}</div>
+                  <div className="text-xs mb-2">{quest.description}</div>
+                  <div className="mt-2 text-xs">
+                    <div className="font-bold mb-1">OBJECTIVES:</div>
+                    {quest.achievements.slice(0, 2).map((achievement, i) => (
+                      <div key={i} className="text-xs">• {achievement}</div>
+                    ))}
+                    {quest.achievements.length > 2 && (
+                      <div className="text-xs">• ...and {quest.achievements.length - 2} more</div>
+                    )}
+                  </div>
+                </div>
+              </Popup>
+            </Marker>
+          ))}
         </MapContainer>
       </div>
 
@@ -290,6 +332,12 @@ const FalloutMap: React.FC = () => {
             Use mouse wheel or +/- buttons to zoom<br/>
             Click and drag to navigate<br/>
             Click marker for location details
+            {trackedQuests.length > 0 && (
+              <>
+                <br/>
+                <span className="text-green-400">★ {trackedQuests.length} tracked quest{trackedQuests.length !== 1 ? 's' : ''} visible</span>
+              </>
+            )}
           </div>
         </div>
       </div>
